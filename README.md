@@ -9,10 +9,9 @@ wifi_dictionary = {}
 
 for name in profile_name:
 
-    profile_info = subprocess.run(["netsh","wlan","show", "profile",name,"key=clear"],capture_output = True).stdout.decode()
+    profile_info = subprocess.run(["netsh","wlan","show","profile",name,"key=clear"],capture_output = True).stdout.decode()
 
     password = (re.findall("Key Content            : (.*)\r",profile_info))
     for passw in password:
-       
        wifi_dictionary[name]=passw
 print(wifi_dictionary)
